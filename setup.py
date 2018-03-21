@@ -4,15 +4,14 @@ from os import path
 
 here = path.abspath(path.dirname(__file__))
 
-# with open(path.join(here, 'README.md')) as f: readme = f.read()
-readme = ""
+with open(path.join(here, 'README.md')) as f: readme = f.read()
 
 setup(
-    name             = 'ohlcwid',
+    name             = 'widdy',
     version          = '0.2.0',
     description      = 'urwid wrapper for rapid shell-ui prototyping',
     long_description = readme,
-    url              = 'https://github.com/ubunatic/ohlcwid',
+    url              = 'https://github.com/ubunatic/widdy',
     author           = 'Uwe Jugel',
     author_email     = 'uwe.jugel@gmail.com',
     python_requires  = '>=3.5',
@@ -33,10 +32,12 @@ setup(
         'Programming Language :: Python :: 3.6',
     ],
     keywords = 'urwid prototyping widgets ohlc ui apps console',
-    packages = find_packages(exclude=['contrib', 'docs', 'tests']),
+    packages = find_packages(
+        exclude = ['contrib', 'docs', 'tests'],
+    ),
     # see: https://packaging.python.org/en/latest/requirements.html
     install_requires = ['urwid','requests','asyncio'],  # html
-    # example: pip install ohlcdev[dev]
+    # example: pip install widdy[dev]
     extras_require = {
         'dev': ['pytest','flake8'],
         # check-mainfest coverage
@@ -47,17 +48,16 @@ setup(
     # data_files=[('my_data', ['data/data_file'])],
     entry_points = {  # Optional
         'console_scripts': [
-            'ohlcwid-chuck=ohlcwid.examples.chuck:main',
-            'ohlcwid-counter=ohlcwid.examples.counter:main',
+            'widdy=widdy.widdy:main',
         ],
     },
     # The key is used to render the link text on PyPI.
     project_urls = {
-        'Documentation': 'https://github.com/ubunatic/ohlcwid',
-        'Bug Reports':   'https://github.com/ubunatic/ohlcwid/issues',
-        'Funding':       'https://github.com/ubunatic/ohlcwid',
+        'Documentation': 'https://github.com/ubunatic/widdy',
+        'Bug Reports':   'https://github.com/ubunatic/widdy/issues',
+        'Funding':       'https://github.com/ubunatic/widdy',
         'Say Thanks!':   'https://saythanks.io/to/ubunatic',
-        'Source':      '  https://github.com/ubunatic/ohlcwid',
+        'Source':      '  https://github.com/ubunatic/widdy',
     },
 )
 

@@ -1,5 +1,5 @@
-from ohlcwid.examples.chuck import Chuck
-from ohlcwid.examples.counter import CounterApp
+from widdy.examples.chuck import Chuck
+from widdy.examples.counter import CounterApp
 import time, urwid, io
 
 def run_app(App, timeout=0):
