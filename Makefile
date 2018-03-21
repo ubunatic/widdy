@@ -5,3 +5,6 @@ test:
 clean:
 	pyclean .
 	rm -rf .cache
+
+install:
+	pip3 install --user -e .
