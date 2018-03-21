@@ -1,5 +1,5 @@
-from ccwid.examples.chuck import Chuck
-from ccwid.examples.counter import CounterApp
+from ohlcwid.examples.chuck import Chuck
+from ohlcwid.examples.counter import CounterApp
 import time, urwid, io
 
 def run_app(App, timeout=0):

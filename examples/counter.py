@@ -1,8 +1,8 @@
-from ccwid import ccwid
+from ohlcwid import ohlcwid
 from random import random
 import time
 
-class CounterApp(ccwid.App):
+class CounterApp(ohlcwid.App):
     tpl = "{time: <20} | {counter: <7}"
 
     def __init__(app):
@@ -10,18 +10,18 @@ class CounterApp(ccwid.App):
         app.headers = [header, len(header) * "-"]
         app.lines   = []
         app.counter = 0
-        txt, app._update_text = ccwid.Text("")
-        box = ccwid.LineBox(txt)
-        menu     = [('+', ccwid.BLUE_BOLD, 'increase'),
-                    ('-', ccwid.BLUE_BOLD, 'decrease'),
-                    ('R', ccwid.YELLOW,    'random'),
-                    ('C', ccwid.RED_BOLD,  'clear')]
+        txt, app._update_text = ohlcwid.Text("")
+        box = ohlcwid.LineBox(txt)
+        menu     = [('+', ohlcwid.BLUE_BOLD, 'increase'),
+                    ('-', ohlcwid.BLUE_BOLD, 'decrease'),
+                    ('R', ohlcwid.YELLOW,    'random'),
+                    ('C', ohlcwid.RED_BOLD,  'clear')]
         handlers = [('+', app.inc),
                     ('-', app.dec),
                     ('R', app.random),
                     ('C', app.clear)]
-        f = ccwid.Frame(ccwid.Header("EmptyApp"), box, ccwid.Menu(*menu))
-        super().__init__(f, handlers=ccwid.Handlers(*handlers))
+        f = ohlcwid.Frame(ohlcwid.Header("EmptyApp"), box, ohlcwid.Menu(*menu))
+        super().__init__(f, handlers=ohlcwid.Handlers(*handlers))
         app.redraw()
 
     def inc(app):    app.counter += 1; app.add_value()
