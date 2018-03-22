@@ -1,6 +1,6 @@
 from widdy import widdy
 from random import random
-import time
+import time, sys
 
 class CounterApp(widdy.App):
     tpl = "{time: <20} | {counter: <7}"
@@ -37,7 +37,7 @@ class CounterApp(widdy.App):
     def redraw(app):
         app.update_text('\n'.join(app.headers + app.lines))
 
-def main(): CounterApp().run()
+def main(argv=None): CounterApp().run()
 
-if __name__ == '__main__': main()
+if __name__ == '__main__': main(sys.argv[1:])
 

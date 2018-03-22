@@ -85,12 +85,3 @@ class App(urwid.MainLoop):
         if loop     is None: loop     = urwid.AsyncioEventLoop(loop=asyncio.get_event_loop())
         super().__init__(frame, pal, unhandled_input=handlers, event_loop=loop)
 
-def main():
-    from widdy.examples import chuck, counter
-    demos = set()
-    if 'counter' in sys.argv: demos.add(counter.main)
-    if 'chuck'   in sys.argv: demos.add(chuck.main)
-    if 'all'     in sys.argv: demos.update({chuck.main, counter.main})
-    for fn in demos: fn()
-
-if __name__ == '__main__': main()

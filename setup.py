@@ -8,7 +8,7 @@ with open(path.join(here, 'README.md')) as f: readme = f.read()
 
 setup(
     name             = 'widdy',
-    version          = '0.2.2',
+    version          = '0.2.3',
     description      = 'urwid wrapper for rapid shell-ui prototyping',
     long_description = readme,
     url              = 'https://github.com/ubunatic/widdy',
@@ -49,7 +49,7 @@ setup(
     # data_files=[('my_data', ['data/data_file'])],
     entry_points = {  # Optional
         'console_scripts': [
-            'widdy=widdy.widdy:main',
+            'widdy=widdy.demos:main',
         ],
     },
     # The key is used to render the link text on PyPI.

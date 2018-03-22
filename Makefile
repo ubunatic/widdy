@@ -5,6 +5,7 @@ all: clean test
 test:
 	python3 -m flake8
 	pytest-3 -s widdy
+	python3 -m widdy.demos --help
 
 clean:
 	pyclean .

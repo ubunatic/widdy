@@ -1,4 +1,4 @@
-import requests
+import requests, sys
 from html.parser import HTMLParser
 from widdy import widdy
 
@@ -22,7 +22,7 @@ class Chuck(widdy.App):
         handlers = widdy.Handlers(('R', app.next_joke))
         super().__init__(f, handlers=handlers)
 
-def main(): Chuck().run()
+def main(argv=None): Chuck().run()
 
-if __name__ == '__main__': main()
+if __name__ == '__main__': main(sys.argv[1:])
 
