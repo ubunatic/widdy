@@ -1,4 +1,4 @@
-.PHONY: test clean install publish
+.PHONY: test clean install publish dist test-publish
 
 all: clean test
 
@@ -11,9 +11,18 @@ clean:
 	rm -rf .cache dist build ohlcwid.egg-info
 
 install:
-	python3 setup.py bdist_wheel
 	pip3 install --user -e .
 
-publish:
-	gpg --detach-sign -a dist/widdy-0.2.0-py3-none-any.whl
-	# twine upload
+dist: clean
+	python3 setup.py bdist_wheel
+	gpg --detach-sign -a dist/*.whl
+	ls dist
+
+test-publish: dist test
+	twine upload --repository testpypi dist/*
+
+publish: dist test
+	twine upload --repository pypi dist/*
+
+docker-test:
+	docker run -it python bash -it -c 'pip install widdy; widdy all'

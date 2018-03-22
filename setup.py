@@ -8,13 +8,14 @@ with open(path.join(here, 'README.md')) as f: readme = f.read()
 
 setup(
     name             = 'widdy',
-    version          = '0.2.0',
+    version          = '0.2.2',
     description      = 'urwid wrapper for rapid shell-ui prototyping',
     long_description = readme,
     url              = 'https://github.com/ubunatic/widdy',
     author           = 'Uwe Jugel',
     author_email     = 'uwe.jugel@gmail.com',
-    python_requires  = '>=3.5',
+    # python_requires  = '>=3.5',
+    license          = 'MIT',
     # see: https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers = [
         # 3 - Alpha, 4 - Beta, 5 - Production/Stable
@@ -22,7 +23,7 @@ setup(
         'Intended Audience :: Developers',
         'Environment :: Console :: Curses',
         'Topic :: Software Development :: Widget Sets',
-        'Topic :: Software Development :: Libraries :: Application Frameworks'
+        'Topic :: Software Development :: Libraries :: Application Frameworks',
         'License :: OSI Approved :: MIT License',
         # 'Programming Language :: Python :: 2',
         # 'Programming Language :: Python :: 2.7',
@@ -57,7 +58,7 @@ setup(
         'Bug Reports':   'https://github.com/ubunatic/widdy/issues',
         'Funding':       'https://github.com/ubunatic/widdy',
         'Say Thanks!':   'https://saythanks.io/to/ubunatic',
-        'Source':      '  https://github.com/ubunatic/widdy',
+        'Source':        'https://github.com/ubunatic/widdy',
     },
 )
 
