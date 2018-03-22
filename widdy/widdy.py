@@ -1,4 +1,4 @@
-import asyncio, sys, urwid, json, requests
+import sys, urwid, json, requests
 import urwid.canvas
 from collections import namedtuple
 from typing import Callable, Tuple, List, Set
@@ -82,6 +82,5 @@ class App(urwid.MainLoop):
     def __init__(app, frame, handlers=None, pal=None, loop=None):
         if pal      is None: pal      = Pal()
         if handlers is None: handlers = Handlers()
-        if loop     is None: loop     = urwid.AsyncioEventLoop(loop=asyncio.get_event_loop())
         super().__init__(frame, pal, unhandled_input=handlers, event_loop=loop)
 

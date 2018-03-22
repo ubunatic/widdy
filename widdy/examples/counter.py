@@ -39,5 +39,8 @@ class CounterApp(widdy.App):
 
 def main(argv=None): CounterApp().run()
 
-if __name__ == '__main__': main(sys.argv[1:])
+if __name__ == '__main__':
+    main(sys.argv[1:])
+    sys.exit(0)
+
 

@@ -18,4 +18,6 @@ def main(argv=None):
     if args.demo == 'all': return [fn() for fn in demos.values()]
     else:                  return demos[args.demo](rest)
 
-if __name__ == '__main__': main(sys.argv[1:])
+if __name__ == '__main__':
+    main(sys.argv[1:])
+    sys.exit(0)

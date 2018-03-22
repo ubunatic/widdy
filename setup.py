@@ -8,7 +8,7 @@ with open(path.join(here, 'README.md')) as f: readme = f.read()
 
 setup(
     name             = 'widdy',
-    version          = '0.2.3',
+    version          = '0.2.6',
     description      = 'urwid wrapper for rapid shell-ui prototyping',
     long_description = readme,
     url              = 'https://github.com/ubunatic/widdy',
@@ -25,10 +25,10 @@ setup(
         'Topic :: Software Development :: Widget Sets',
         'Topic :: Software Development :: Libraries :: Application Frameworks',
         'License :: OSI Approved :: MIT License',
-        # 'Programming Language :: Python :: 2',
-        # 'Programming Language :: Python :: 2.7',
-        # 'Programming Language :: Python :: 3',
-        # 'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
     ],
@@ -37,10 +37,10 @@ setup(
         exclude = ['contrib', 'docs', 'tests'],
     ),
     # see: https://packaging.python.org/en/latest/requirements.html
-    install_requires = ['urwid','requests','asyncio'],  # html
+    install_requires = ['urwid','requests','typing','future'],  # html
     # example: pip install widdy[dev]
     extras_require = {
-        'dev': ['pytest','flake8'],
+        'dev': ['pytest','flake8','twine','pasteurize'],
         # check-mainfest coverage
     },
     # data files
