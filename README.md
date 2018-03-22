@@ -25,4 +25,5 @@ or try the demo apps:
 
 Development
 -----------
-pip3 install widdy[dev]
+
+    pip3 install widdy[dev]
