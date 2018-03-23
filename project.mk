@@ -11,13 +11,25 @@
 # Then add your common targets, such as `test`, `docker-test`, etc.
 # Now use `make`, `make test`, `make install`, etc.
 # See each target for more details.	
+#
+# New Project Quickstart 
+# ----------------------
+# Just run `make clone PREFIX=path/to NEW_PRJ=new_project
+# This will copy all important files to $(PREFIX)/$(NEW_PRJ)
+# and try to replace all relevant old $(PRJ) strings with $(NEW_PRJ)
+#
+# Notes
+# -----
+# All _lower_case vars are internal vars not supposed to be overwritten
+#
 
-.PHONY: all test base-test clean install publish test-publish sign docker-test docker-base-test
+.PHONY: all test base-test clean install publish test-publish sign docker-test docker-base-test clone
 
 # The default project name is the name of the current dir
 PRJ      := $(shell basename $(CURDIR))
 # All code should reside in another subdir with that name of the project
-TP_FILES := $(PRJ) setup.py setup.cfg project.cfg project.mk Makefile LICENSE.txt README.md
+PRJ_FILES := setup.py setup.cfg project.cfg project.mk Makefile LICENSE.txt README.md
+TP_FILES := $(PRJ) $(PRJ_FILES)
 # All code is assumed to be written for Py3, for Py2 support we need to transpile it
 DIST     := transpiled/dist
 
@@ -81,6 +93,17 @@ docker-base-test:
 	# after pushing to pypi you want to check if you can pull and run
 	# in a clean environment. Safest bet is to use docker!
 	docker run -it python:$(PY) bash -i -c 'pip install $(PRJ); $(IMPORT_TEST); $(CLI_TEST)'
+
+_prj_path  := $(PREFIX)/$(NEW_PRJ)
+_prj_files := $(patsubst %,$(_prj_path)/%,$(PRJ_FILES))
+clone:
+	test -n "$(NEW_PRJ)" -a -n "$(PREFIX)"
+	! test -e $(_prj_path)  # target project path must not exist
+	mkdir -p $(_prj_path)
+	cp $(PRJ_FILES) $(_prj_path)
+	# replace all refs to current project with new project
+	sed -i 's#$(PRJ)#$(NEW_PRJ)#g' $(_prj_files)
+	diff --color $(_prj_path) . 2> /dev/null || true  # compare the copied files to the source files
 
 # docker-test also runs basic import and run test
 docker-test: docker-base-test
