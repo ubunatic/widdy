@@ -1,4 +1,5 @@
-from widdy import widdy
+import widdy
+from widdy import styles
 from random import random
 import time, sys
 
@@ -12,10 +13,10 @@ class CounterApp(widdy.App):
         app.counter = 0
         txt, app.update_text = widdy.Text("")
         box = widdy.LineBox(txt)
-        menu     = [('+', widdy.BLUE_BOLD,   'increase'),
-                    ('-', widdy.CYAN_BOLD,   'decrease'),
-                    ('R', widdy.YELLOW_BOLD, 'random'),
-                    ('C', widdy.RED_BOLD,    'clear')]
+        menu     = [('+', styles.BLUE_BOLD,   'increase'),
+                    ('-', styles.CYAN_BOLD,   'decrease'),
+                    ('R', styles.YELLOW_BOLD, 'random'),
+                    ('C', styles.RED_BOLD,    'clear')]
         handlers = [('+', app.inc),
                     ('-', app.dec),
                     ('R', app.random),

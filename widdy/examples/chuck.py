@@ -1,6 +1,7 @@
 import requests, sys
 from html.parser import HTMLParser
-from widdy import widdy
+import widdy
+from widdy import styles
 
 class Chuck(widdy.App):
     def get_joke(app):
@@ -15,7 +16,7 @@ class Chuck(widdy.App):
 
     def __init__(app):
         h = widdy.Header("Random Quotes")
-        m = widdy.Menu(('R', widdy.GREEN_BOLD, 'new quote'))
+        m = widdy.Menu(('R', styles.GREEN_BOLD, 'new quote'))
         t, app.update_text = widdy.Text('Press (R) to get your first quote...')
         b = widdy.LineBox(t)
         f = widdy.Frame(h,b,m)
