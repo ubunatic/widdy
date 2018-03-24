@@ -137,7 +137,7 @@ merge-project: copy-tools
 	sed -i 's#$(_expr_assig)$(_expr_sub)#\1$(_prj_main)#g' $(_prj_files)             # replace current main in copied files
 	sed -i 's#$(PRJ)#$(NEW_PRJ)#g'                         $(_prj_files)             # replace current project in copied files
 	touch $(_prj_package)/__init__.py       # create python package
-	touch $(_prj_package)/$(NEW_PRJ).py     # create main module python package
+	touch $(_prj_package)/__main__.py       # make package runnable
 	test -e $(_prj_test) || echo '$(_prj_test_def)' > $(_prj_test)  # create a test file
 	$(_diff) . $(_prj_path) || true         # compare the copied files to the source files
 	#-------------------------------------------
