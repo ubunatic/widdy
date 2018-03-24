@@ -1,6 +1,6 @@
 .PHONY: test docker-demos
 
-MAIN := widdy.demos
+MAIN := widdy
 
 include project.mk
 

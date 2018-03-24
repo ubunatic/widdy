@@ -46,6 +46,8 @@ MAIN        = $(PRJ)
 CLI_TEST    = $(PYTHON) -m $(MAIN) -h >/dev/null
 IMPORT_TEST = $(PYTHON) -c "import $(MAIN)"
 
+export PYTHONPATH += :.
+
 all: clean test
 
 # make test deend on base-test to trigger all tests
@@ -53,7 +55,7 @@ all: clean test
 test: base-test
 
 base-test: $(TP_FILES)
-	# lint and test the project
+	# lint and test the project (PYTHONPATH = $(PYTHONPATH))
 	python3 -m flake8
 	pytest-3 -s $(PRJ) $(PRJ_TESTS)
 	$(CLI_TEST)
