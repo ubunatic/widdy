@@ -84,7 +84,8 @@ install-source: test
 TP_WHL = $(shell find ./transpiled/dist -name '*.whl')
 install-backport: build
 	# install transpiled version using std pip (should wrrk with pip2 and pip3)
-	pip2.7 install --user $(TP_WHL)
+	pip2.7 uninstall -y $(PRJ)
+	pip2.7 install --user --force-reinstall $(TP_WHL)
 	#
 	# transpiled installation
 	# -----------------------
@@ -104,6 +105,7 @@ transpiled: $(TP_FILES)
 	mkdir -p transpiled
 	cp -r $(TP_FILES) transpiled
 	pasteurize -w --no-diff transpiled/$(PRJ)
+	sed -i 's#\(ignore[ ]*=[ ]*.*\)#\1,F401#g' transpiled/setup.cfg
 	$(MAKE) -C transpiled dist PY=2 DIST=dist PRJ=$(PRJ)
 	ls $(DIST)
 
