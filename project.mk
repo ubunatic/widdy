@@ -25,7 +25,7 @@
 #   all custom building in your main `Makefile`.
 #
 
-.PHONY: all test base-test clean install publish test-publish sign docker-test docker-base-test clone build
+.PHONY: all test base-test clean install publish test-publish sign docker-test docker-base-test clone build transpiled
 
 # The default project name is the name of the current dir
 PRJ       := $(shell basename $(CURDIR))
