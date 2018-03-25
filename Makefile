@@ -1,6 +1,7 @@
 .PHONY: test docker-demos
 
 MAIN := widdy
+override PY ?= 3
 
 include project.mk
 
