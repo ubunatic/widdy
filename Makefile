@@ -1,12 +1,9 @@
-.PHONY: test docker-demos
+.PHONY: docker-test
 
 MAIN := widdy
 override PY ?= 3
 
 include project.mk
-
-test: $(TP_FILES)
-	$(PYTHON) -m $(MAIN) --help >/dev/null
 
 docker-test:
 	docker run -it python:$(PY) bash -i -c 'pip install widdy; widdy all; true'
