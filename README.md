@@ -30,7 +30,6 @@ Then install the cloned version and install missing tools.
 
     make             # clean and run all tests
     make install     # install the checked-out dev version
-    make transpiled  # transpile Py3 to Py2
 
 You may need to install some tools and modules, i.e., `flake8`, `pytest-3`, `twine`, `urwid`, and maybe others.
 
