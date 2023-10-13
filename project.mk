@@ -88,7 +88,7 @@ install-tools:
 
 # Packaging
 # =========
-.PHONY: sign test-publish publish docker-base-test docker-test
+.PHONY: dist sign test-publish publish docker-base-test docker-test
 
 dist: test
 	# build the dist
@@ -99,12 +99,12 @@ sign: $(DIST)
 	# sign the dist with your gpg key
 	gpg --detach-sign -a $(DIST)/*.whl
 
-test-publish: test build
+test-publish: test dist
 	# upload to testpypi (need valid ~/.pypirc)
 	twine check $(DIST)/*
 	twine upload --repository testpypi $(DIST)/*
 
-publish: test build sign
+publish: test dist sign
 	# upload to pypi (requires pypi account)
 	twine upload --repository pypi $(DIST)/*
 
@@ -164,7 +164,7 @@ merge-project: copy-tools
 	#-------------------------------------------
 	@echo cd $(_prj_path)
 	@echo make
-	@echo make build
+	@echo make dist
 	# -------------------------------------------
 
 clone-project: check-clone merge-project
