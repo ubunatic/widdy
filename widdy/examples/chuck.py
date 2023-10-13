@@ -1,12 +1,11 @@
 import requests, sys
-from html.parser import HTMLParser
 import widdy
 from widdy import styles
 
 class Chuck(widdy.App):
     def get_joke(app):
-        joke = requests.get('http://api.icndb.com/jokes/random').json()
-        return HTMLParser().unescape(joke['value']['joke']).encode('utf-8')
+        joke = requests.get('https://api.chucknorris.io/jokes/random').json()
+        return f"{joke['value']}"
 
     def next_joke(app):
         app.update_text('Getting new quote...')

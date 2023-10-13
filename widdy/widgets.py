@@ -1,10 +1,9 @@
-import sys, urwid
+import urwid
 from collections import namedtuple
 from typing import List
 from widdy import styles
 
-if sys.version_info.major >= 3: import asyncio
-else:                           import trollius as asyncio
+import asyncio
 
 MenuItem = namedtuple('MenuItem', 'key style text')
 KeyFunc  = namedtuple('KeyFunc',  'key func')

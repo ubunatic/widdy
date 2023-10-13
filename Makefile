@@ -1,7 +1,7 @@
 .PHONY: docker-test
 
-MAIN := widdy
-override PY ?= 3
+MAIN   := widdy
+PYTHON := python
 
 include project.mk
 
