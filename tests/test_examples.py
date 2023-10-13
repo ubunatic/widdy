@@ -1,15 +1,17 @@
+#!/usr/bin/env python
+import widdy
 from widdy.examples.chuck import Chuck
 from widdy.examples.counter import CounterApp
 import time, urwid, io
 
-def run_app(App, timeout=0):
-    loop = App()  # type: urwid.MainLoop
+def run_app(app:widdy.App, timeout=0):
+    loop = app()
     if timeout > 0:
-        print("run_app {} start for {:f}s".format(App, timeout))
+        print("run_app {} start for {:f}s".format(app, timeout))
         loop.start()
         time.sleep(timeout)
         loop.stop()
-        print("run_app {} done.".format(App))
+        print("run_app {} done.".format(app))
     else:
         loop.run()
 
